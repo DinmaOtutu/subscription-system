@@ -4,6 +4,9 @@ use App\Http\Controllers\SubscriberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
+
+Route::get('/subscribers', [SubscriberController::class, 'all'])
+    ->name('subscribers.all');
