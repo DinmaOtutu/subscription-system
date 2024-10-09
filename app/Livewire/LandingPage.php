@@ -4,17 +4,28 @@ namespace App\Livewire;
 
 use App\Models\Subscriber;
 use Livewire\Component;
-use Illuminate\Auth\Notifications\VerifyEmail; // Use the correct namespace for VerifyEmail
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request;
 
 class LandingPage extends Component
 {
     public $email;
+    public $showSubscribe = false;
+    public $showSuccess = false;
+
 
     protected $rules = [
         'email' => 'required|email:filter|unique:subscribers,email',
     ];
+
+    public function mount(Request $request) 
+    {
+        if($request->has('verified') && $request -> verified == 1) {
+          $this->showSuccess = true;
+        };
+    }
 
     public function subscribe() 
     {
@@ -31,13 +42,16 @@ class LandingPage extends Component
                     now()->addMinutes(30),
                     [
                         'subscriber'=> $notifiable->getKey()
-                    ]
+                    ],
                     );
             });
             $subscriber->notify($notification);
-        }, 5);
+        }, $deadlockRestries = 5);
 
         $this->reset('email');
+        $this->showSubscribe = false;
+        $this->showSuccess = true;
+
     }
 
     public function render()
