@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notification\Notifiable;
+
 
 class Subscriber extends Model
 {
     /** @use HasFactory<\Database\Factories\SubscriberFactory> */
-    use HasFactory;
-   // use HasFactory, Notifiable;
+    use HasFactory, MustVerifyEmail, Notifiable;
+  
 
     /**
      * The attributes that are mass assignable.

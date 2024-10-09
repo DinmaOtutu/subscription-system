@@ -1,4 +1,4 @@
-## HOW TO SET UP AND RUN THE SUBSCRIBER APPLICATION
+## HOW TO SET UP AND RUN THE NEWS LETTER SUBSCRIPTION
 - Clone the repo
 
 - run `npm install`to install all dependencies 
