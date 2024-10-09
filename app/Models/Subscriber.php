@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notification\Notifiable;
+use Illuminate\Notifications\Notifiable;
 
 
 class Subscriber extends Model

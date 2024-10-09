@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/subscribers/verify{subscriber}', [SubscriberController::class, 'verify'])
+->middleware('signed')->name('subscribers.verify');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
