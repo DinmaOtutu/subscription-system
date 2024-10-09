@@ -77,4 +77,5 @@
         </p>
         @endif
     </x-my-modal>
+
 </div>

@@ -24,6 +24,7 @@ class LandingPage extends Component
     {
         if($request->has('verified') && $request -> verified == 1) {
           $this->showSuccess = true;
+          $this->showSubscribe = false;
         };
     }
 
